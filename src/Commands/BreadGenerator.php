@@ -56,7 +56,7 @@ class BreadGenerator extends GeneratorCommand
     protected function buildClass($name)
     {
         $stub = $this->files->get($this->getStub());
-        return $this->replacePlaceholders($stub)->replaceNamespace($stub, $name)->replaceClass($stub, $name);
+        return $this->replacePlaceholders($stub)->replaceNamespace($stub, $name)->replaceClass($stub, Str::plural($name));
     }
 
     /**
@@ -72,7 +72,11 @@ class BreadGenerator extends GeneratorCommand
             'DummyStudlyCaseSingular' => Str::studly($name),
             'DummyStudlyCasePlural' => Str::plural(Str::studly($name)),
             'DummySnakeCaseSingular' => Str::snake($name),
-            'DummySnakeCasePlural' => Str::plural(Str::snake($name))
+            'DummySnakeCasePlural' => Str::plural(Str::snake($name)),
+            'DummyKebabCaseSingular' => Str::kebab_case($name),
+            'DummyKebabCasePlural' => Str::plural(Str::kebab_case($name)),
+            'DummyTitleCaseSingular' => Str::title_case( str_replace(['_', '-'], ' ', $name)),
+            'DummyTitleCasePlural' => Str::plural(Str::title_case( str_replace(['_', '-'], ' ', $name)))
         ]);
         foreach ($replacements as $placeholder => $replacement) {
             $stub = str_replace($placeholder, $replacement, $stub);
