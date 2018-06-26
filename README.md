@@ -19,7 +19,7 @@ If you have an existing model / table called `list_items` with the corresponding
 
 ```bash
 ### Create a seeder for an existing model / table
-php artisan migrate voyager:bread list_item
+php artisan voyager:bread list_item
 
 ### Generates database/seeds/ListItemsBreadSeeder.php
 ```

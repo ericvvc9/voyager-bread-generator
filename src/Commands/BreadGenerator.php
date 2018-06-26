@@ -73,10 +73,10 @@ class BreadGenerator extends GeneratorCommand
             'DummyStudlyCasePlural' => Str::plural(Str::studly($name)),
             'DummySnakeCaseSingular' => Str::snake($name),
             'DummySnakeCasePlural' => Str::plural(Str::snake($name)),
-            'DummyKebabCaseSingular' => Str::kebab_case($name),
-            'DummyKebabCasePlural' => Str::plural(Str::kebab_case($name)),
-            'DummyTitleCaseSingular' => Str::title_case( str_replace(['_', '-'], ' ', $name)),
-            'DummyTitleCasePlural' => Str::plural(Str::title_case( str_replace(['_', '-'], ' ', $name)))
+            'DummyKebabCaseSingular' => Str::kebab($name),
+            'DummyKebabCasePlural' => Str::plural(Str::kebab($name)),
+            'DummyTitleCaseSingular' => Str::title( str_replace(['_', '-'], ' ', $name)),
+            'DummyTitleCasePlural' => Str::plural(Str::title( str_replace(['_', '-'], ' ', $name)))
         ]);
         foreach ($replacements as $placeholder => $replacement) {
             $stub = str_replace($placeholder, $replacement, $stub);
