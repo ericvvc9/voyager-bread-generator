@@ -73,16 +73,41 @@ class BreadGenerator extends GeneratorCommand
             'DummyStudlyCasePlural' => Str::plural(Str::studly($name)),
             'DummySnakeCaseSingular' => Str::snake($name),
             'DummySnakeCasePlural' => Str::plural(Str::snake($name)),
-            'DummyKebabCaseSingular' => Str::kebab($name),
-            'DummyKebabCasePlural' => Str::plural(Str::kebab($name)),
-            'DummyTitleCaseSingular' => Str::title( str_replace(['_', '-'], ' ', $name)),
-            'DummyTitleCasePlural' => Str::plural(Str::title( str_replace(['_', '-'], ' ', $name)))
+            'DummyKebabCaseSingular' => $this->actualKebab( Str::kebab( $name ) ),
+            'DummyKebabCasePlural' => $this->actualKebab( Str::kebab( Str::plural($name))),
+            'DummyTitleCaseSingular' => $this->spacedTitle(Str::title($name)),
+            'DummyTitleCasePlural' => $this->spacedTitle(Str::title(Str::plural($name)))
         ]);
         foreach ($replacements as $placeholder => $replacement) {
             $stub = str_replace($placeholder, $replacement, $stub);
         }
 
         return $this;
+    }
+
+    /**
+     * Force conversion to kebab-case
+     * 
+     * @param string $input
+     * @return string
+     */
+
+    protected function actualKebab( $input = '' ){
+        return str_replace( '_', '-', $input);
+    }
+
+    /**
+     * Force conversion to Spaced Title Case
+     * 
+     * eg: 'this-is_my string'
+     * outputs 'This Is My String'
+     * 
+     * @param string $input
+     * @return string
+     */
+
+    protected function spacedTitle( $input = '' ){
+        return str_replace(['_', '-'], ' ', $input);
     }
 
     /**
