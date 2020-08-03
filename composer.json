@@ -1,9 +1,9 @@
 {
-    "name": "gruz/voyager-bread-generator",
+    "name": "ericvvc9/voyager-bread-generator",
     "description": "Create BREAD from the console using artisan",
     "type": "library",
     "require": {
-        "tcg/voyager": "^1.0"
+        "ericvvc9/voyager": "^1.4"
     },
     "require-dev": {
         "laravel/laravel": "^5.5"
